@@ -1,0 +1,63 @@
+syntax = "proto2";
+package mumu;
+
+option optimize_for = SPEED;
+option java_package = "com.jakemick.mumu";
+option java_outer_classname = "Mumu";
+
+message Array {
+    repeated int32 dim = 1 [packed = true];
+    repeated float content = 2 [packed = true];
+}
+
+enum Activation {
+    relu = 1;
+    sigmoid = 2;
+    softmax = 3;
+    softplus = 4;
+    linear = 5;
+    hard_sigmoid = 6;
+    tanh = 7;
+}
+
+message ActivationNode {
+    // X_h = f(X)
+    required int32 parent = 1;
+    required Activation activation = 2;
+}
+
+message DenseNode {
+    // X_h = W * X + B
+    required Array weight = 1;
+    required Array bias = 2;
+    required Activation activation = 3;
+    required int32 parent = 4;
+}
+
+message DropoutNode {
+    // X_h = p * X
+    required float probability = 1;
+    required int32 parent = 2;
+}
+
+message NormalizationNode {
+    // X_n = (X - mean) / (std + epsilon)
+    // X_h = gamma * X_n + beta
+    required Array gamma = 1;
+    required Array beta = 2;
+    required float epsilon = 3;
+    required int32 parent = 4;
+}
+
+message Node {
+    oneof Layer {
+        DenseNode denseNode = 1;
+        DropoutNode dropoutNode = 2;
+        NormalizationNode normalizationNode = 3;
+        ActivationNode activationNode = 4;
+    }
+}
+
+message Network {
+    repeated Node layers = 1;
+}

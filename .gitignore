@@ -1,0 +1,49 @@
+.idea
+.pyc
+# Byte-compiled / optimized / DLL files
+py/__pycache__/
+*.py[cod]
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+py/env/
+py/build/
+py/develop-eggs/
+py/dist/
+py/downloads/
+py/eggs/
+py/.eggs/
+py/lib/
+py/lib64/
+py/parts/
+py/sdist/
+py/var/
+py/*.egg-info/
+.installed.cfg
+*.egg
+
+# PyInstaller
+#  Usually these files are written by a python script from a template
+#  before PyInstaller builds the exe, so as to inject date/other infos into it.
+*.manifest
+*.spec
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+*.class
+
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
+
+# Package Files #
+*.jar
+*.war
+*.ear
+
+# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+hs_err_pid*
