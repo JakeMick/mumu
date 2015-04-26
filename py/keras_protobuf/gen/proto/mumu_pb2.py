@@ -20,7 +20,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='proto/mumu.proto',
   package='mumu',
   syntax='proto2',
-  serialized_pb=_b('\n\x10proto/mumu.proto\x12\x04mumu\"-\n\x05\x41rray\x12\x0f\n\x03\x64im\x18\x01 \x03(\x05\x42\x02\x10\x01\x12\x13\n\x07\x63ontent\x18\x02 \x03(\x02\x42\x02\x10\x01\"F\n\x0e\x41\x63tivationNode\x12\x0e\n\x06parent\x18\x01 \x02(\x05\x12$\n\nactivation\x18\x02 \x02(\x0e\x32\x10.mumu.Activation\"y\n\tDenseNode\x12\x1b\n\x06weight\x18\x01 \x02(\x0b\x32\x0b.mumu.Array\x12\x19\n\x04\x62ias\x18\x02 \x02(\x0b\x32\x0b.mumu.Array\x12$\n\nactivation\x18\x03 \x02(\x0e\x32\x10.mumu.Activation\x12\x0e\n\x06parent\x18\x04 \x02(\x05\"2\n\x0b\x44ropoutNode\x12\x13\n\x0bprobability\x18\x01 \x02(\x02\x12\x0e\n\x06parent\x18\x02 \x02(\x05\"k\n\x11NormalizationNode\x12\x1a\n\x05gamma\x18\x01 \x02(\x0b\x32\x0b.mumu.Array\x12\x19\n\x04\x62\x65ta\x18\x02 \x02(\x0b\x32\x0b.mumu.Array\x12\x0f\n\x07\x65psilon\x18\x03 \x02(\x02\x12\x0e\n\x06parent\x18\x04 \x02(\x05\"\xc5\x01\n\x04Node\x12$\n\tdenseNode\x18\x01 \x01(\x0b\x32\x0f.mumu.DenseNodeH\x00\x12(\n\x0b\x64ropoutNode\x18\x02 \x01(\x0b\x32\x11.mumu.DropoutNodeH\x00\x12\x34\n\x11normalizationNode\x18\x03 \x01(\x0b\x32\x17.mumu.NormalizationNodeH\x00\x12.\n\x0e\x61\x63tivationNode\x18\x04 \x01(\x0b\x32\x14.mumu.ActivationNodeH\x00\x42\x07\n\x05Layer\"%\n\x07Network\x12\x1a\n\x06layers\x18\x01 \x03(\x0b\x32\n.mumu.Node*f\n\nActivation\x12\x08\n\x04relu\x10\x01\x12\x0b\n\x07sigmoid\x10\x02\x12\x0b\n\x07softmax\x10\x03\x12\x0c\n\x08softplus\x10\x04\x12\n\n\x06linear\x10\x05\x12\x10\n\x0chard_sigmoid\x10\x06\x12\x08\n\x04tanh\x10\x07\x42\x1b\n\x11\x63om.jakemick.mumuB\x04MumuH\x01')
+  serialized_pb=_b('\n\x10proto/mumu.proto\x12\x04mumu\"-\n\x05\x41rray\x12\x0f\n\x03\x64im\x18\x01 \x03(\x05\x42\x02\x10\x01\x12\x13\n\x07\x63ontent\x18\x02 \x03(\x02\x42\x02\x10\x01\"F\n\x0e\x41\x63tivationNode\x12\x0e\n\x06parent\x18\x01 \x02(\x05\x12$\n\nactivation\x18\x02 \x02(\x0e\x32\x10.mumu.Activation\"y\n\tDenseNode\x12\x1b\n\x06weight\x18\x01 \x02(\x0b\x32\x0b.mumu.Array\x12\x19\n\x04\x62ias\x18\x02 \x02(\x0b\x32\x0b.mumu.Array\x12$\n\nactivation\x18\x03 \x02(\x0e\x32\x10.mumu.Activation\x12\x0e\n\x06parent\x18\x04 \x02(\x05\"2\n\x0b\x44ropoutNode\x12\x13\n\x0bprobability\x18\x01 \x02(\x02\x12\x0e\n\x06parent\x18\x02 \x02(\x05\"k\n\x11NormalizationNode\x12\x1a\n\x05gamma\x18\x01 \x02(\x0b\x32\x0b.mumu.Array\x12\x19\n\x04\x62\x65ta\x18\x02 \x02(\x0b\x32\x0b.mumu.Array\x12\x0f\n\x07\x65psilon\x18\x03 \x02(\x02\x12\x0e\n\x06parent\x18\x04 \x02(\x05\"\xc5\x01\n\x04Node\x12$\n\tdenseNode\x18\x01 \x01(\x0b\x32\x0f.mumu.DenseNodeH\x00\x12(\n\x0b\x64ropoutNode\x18\x02 \x01(\x0b\x32\x11.mumu.DropoutNodeH\x00\x12\x34\n\x11normalizationNode\x18\x03 \x01(\x0b\x32\x17.mumu.NormalizationNodeH\x00\x12.\n\x0e\x61\x63tivationNode\x18\x04 \x01(\x0b\x32\x14.mumu.ActivationNodeH\x00\x42\x07\n\x05Layer\"#\n\x05MuNet\x12\x1a\n\x06layers\x18\x01 \x03(\x0b\x32\n.mumu.Node*f\n\nActivation\x12\x08\n\x04relu\x10\x01\x12\x0b\n\x07sigmoid\x10\x02\x12\x0b\n\x07softmax\x10\x03\x12\x0c\n\x08softplus\x10\x04\x12\n\n\x06linear\x10\x05\x12\x10\n\x0chard_sigmoid\x10\x06\x12\x08\n\x04tanh\x10\x07\x42\x1a\n\rcom.mumu.coreB\x07MumuGenH\x01')
 )
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
@@ -61,8 +61,8 @@ _ACTIVATION = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   options=None,
-  serialized_start=668,
-  serialized_end=770,
+  serialized_start=666,
+  serialized_end=768,
 )
 _sym_db.RegisterEnumDescriptor(_ACTIVATION)
 
@@ -350,15 +350,15 @@ _NODE = _descriptor.Descriptor(
 )
 
 
-_NETWORK = _descriptor.Descriptor(
-  name='Network',
-  full_name='mumu.Network',
+_MUNET = _descriptor.Descriptor(
+  name='MuNet',
+  full_name='mumu.MuNet',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='layers', full_name='mumu.Network.layers', index=0,
+      name='layers', full_name='mumu.MuNet.layers', index=0,
       number=1, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
@@ -377,7 +377,7 @@ _NETWORK = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=629,
-  serialized_end=666,
+  serialized_end=664,
 )
 
 _ACTIVATIONNODE.fields_by_name['activation'].enum_type = _ACTIVATION
@@ -402,14 +402,14 @@ _NODE.fields_by_name['normalizationNode'].containing_oneof = _NODE.oneofs_by_nam
 _NODE.oneofs_by_name['Layer'].fields.append(
   _NODE.fields_by_name['activationNode'])
 _NODE.fields_by_name['activationNode'].containing_oneof = _NODE.oneofs_by_name['Layer']
-_NETWORK.fields_by_name['layers'].message_type = _NODE
+_MUNET.fields_by_name['layers'].message_type = _NODE
 DESCRIPTOR.message_types_by_name['Array'] = _ARRAY
 DESCRIPTOR.message_types_by_name['ActivationNode'] = _ACTIVATIONNODE
 DESCRIPTOR.message_types_by_name['DenseNode'] = _DENSENODE
 DESCRIPTOR.message_types_by_name['DropoutNode'] = _DROPOUTNODE
 DESCRIPTOR.message_types_by_name['NormalizationNode'] = _NORMALIZATIONNODE
 DESCRIPTOR.message_types_by_name['Node'] = _NODE
-DESCRIPTOR.message_types_by_name['Network'] = _NETWORK
+DESCRIPTOR.message_types_by_name['MuNet'] = _MUNET
 DESCRIPTOR.enum_types_by_name['Activation'] = _ACTIVATION
 
 Array = _reflection.GeneratedProtocolMessageType('Array', (_message.Message,), dict(
@@ -454,16 +454,16 @@ Node = _reflection.GeneratedProtocolMessageType('Node', (_message.Message,), dic
   ))
 _sym_db.RegisterMessage(Node)
 
-Network = _reflection.GeneratedProtocolMessageType('Network', (_message.Message,), dict(
-  DESCRIPTOR = _NETWORK,
+MuNet = _reflection.GeneratedProtocolMessageType('MuNet', (_message.Message,), dict(
+  DESCRIPTOR = _MUNET,
   __module__ = 'proto.mumu_pb2'
-  # @@protoc_insertion_point(class_scope:mumu.Network)
+  # @@protoc_insertion_point(class_scope:mumu.MuNet)
   ))
-_sym_db.RegisterMessage(Network)
+_sym_db.RegisterMessage(MuNet)
 
 
 DESCRIPTOR.has_options = True
-DESCRIPTOR._options = _descriptor._ParseOptions(descriptor_pb2.FileOptions(), _b('\n\021com.jakemick.mumuB\004MumuH\001'))
+DESCRIPTOR._options = _descriptor._ParseOptions(descriptor_pb2.FileOptions(), _b('\n\rcom.mumu.coreB\007MumuGenH\001'))
 _ARRAY.fields_by_name['dim'].has_options = True
 _ARRAY.fields_by_name['dim']._options = _descriptor._ParseOptions(descriptor_pb2.FieldOptions(), _b('\020\001'))
 _ARRAY.fields_by_name['content'].has_options = True

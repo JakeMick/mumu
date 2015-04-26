@@ -36,7 +36,7 @@ class SerializedKeras():
         return model
 
     def serialize(self, model):
-        self._serialized_network = mu.Network()
+        self._serialized_network = mu.MuNet()
         for (ind, keras_layer) in enumerate(model.layers):
             self._serialized_layer = self._serialized_network.layers.add()
             if isinstance(keras_layer, Dense):

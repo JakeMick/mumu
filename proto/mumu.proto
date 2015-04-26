@@ -2,8 +2,8 @@ syntax = "proto2";
 package mumu;
 
 option optimize_for = SPEED;
-option java_package = "com.jakemick.mumu";
-option java_outer_classname = "Mumu";
+option java_package = "com.mumu.core";
+option java_outer_classname = "MumuGen";
 
 message Array {
     repeated int32 dim = 1 [packed = true];
@@ -58,6 +58,6 @@ message Node {
     }
 }
 
-message Network {
+message MuNet {
     repeated Node layers = 1;
 }

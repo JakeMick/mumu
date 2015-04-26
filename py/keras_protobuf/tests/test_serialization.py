@@ -1,13 +1,15 @@
 import unittest
 import numpy as np
+import pandas as pd
 from keras.models import Sequential
 from keras.layers.core import Dense, Dropout, Activation
 from keras.layers.normalization import BatchNormalization
 from keras.optimizers import SGD
+from sklearn.datasets import make_circles
 from ..serialize_model import SerializedKeras
 
 
-def fancy_nn(in_dim, out_dim):
+def nn(in_dim, out_dim):
     composition = [
         Dense(in_dim, 100, init='glorot_normal', activation='relu'),
         Activation('relu'),
@@ -26,40 +28,31 @@ def fancy_nn(in_dim, out_dim):
     return model
 
 
-def fancy_nn_reg(in_dim, out_dim):
-    composition = [
-        Dense(in_dim, 100, init='glorot_normal'),
-        Activation('relu'),
-        BatchNormalization(100),
-        Dropout(0.5),
-        Dense(100, 100, init='glorot_normal'),
-        Activation('relu'),
-        BatchNormalization(100),
-        Dropout(0.5),
-        Dense(100, out_dim, init='glorot_normal'),
-        Activation('linear')
-    ]
-    model = Sequential()
-    for layer in composition:
-        model.add(layer)
-    return model
-
-
-class TestClazz(unittest.TestCase):
+class TestSerialDeserial(unittest.TestCase):
 
     def setUp(self):
-        self.nn = fancy_nn(10, 10)
-        self.nn.compile(SGD(), 'mse')
+        X, y = make_circles(1000, random_state=123)
+        self.nn = nn(X.shape[1], 1)
+        self.nn.compile(SGD(), 'binary_crossentropy')
+        self.nn.fit(X[:800], y[:800])
+        self.X_te, self.y_te = X[800:], y[800:]
 
     def test_serial_deserial(self):
-        serer = SerializedKeras()
-        sered = serer.serialize(self.nn)
-        deserer = SerializedKeras()
-        nn_de = deserer.deserialize(sered)
-        nn_de.compile(SGD(), 'mse')
-        x = np.random.random((100, 10))
-        assert(np.allclose(self.nn.predict_proba(x),
-                           nn_de.predict_proba(x)))
+        serializer = SerializedKeras()
+        self.serialized_model = serializer.serialize(self.nn)
+        deserializer = SerializedKeras()
+        model = deserializer.deserialize(self.serialized_model)
+        model.compile(SGD(), 'binary_crossentropy')
+        assert(np.allclose(self.nn.predict_proba(self.X_te),
+                           model.predict_proba(self.X_te)))
+    
+    def tearDown(self):
+        with open('../temp/nn.bin', 'w') as handle:
+            handle.write(self.serialized_model.SerializeToString())
+        df = pd.DataFrame(self.X_te)
+        df['y'] = self.y_te
+        df.to_csv('../temp/data.csv')
+
 
 if __name__ == '__main__':
     unittest.main()
