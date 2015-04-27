@@ -3,6 +3,8 @@
 
 package com.mumu.core;
 
+import com.google.protobuf.CodedOutputStream;
+
 public final class MumuGen {
   private MumuGen() {}
   public static void registerAllExtensions(
@@ -11,6 +13,7 @@ public final class MumuGen {
   /**
    * Protobuf enum {@code mumu.Activation}
    */
+  @SuppressWarnings("FinalStaticMethod")
   public enum Activation
       implements com.google.protobuf.ProtocolMessageEnum {
     /**
@@ -110,6 +113,7 @@ public final class MumuGen {
         getDescriptorForType() {
       return getDescriptor();
     }
+    @SuppressWarnings("FinalStaticMethod")
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
       return com.mumu.core.MumuGen.getDescriptor().getEnumTypes().get(0);
@@ -170,6 +174,7 @@ public final class MumuGen {
   /**
    * Protobuf type {@code mumu.Array}
    */
+  @SuppressWarnings("FinalStaticMethod")
   public  static final class Array extends
       com.google.protobuf.GeneratedMessage implements
       // @@protoc_insertion_point(message_implements:mumu.Array)
@@ -271,6 +276,7 @@ public final class MumuGen {
         makeExtensionsImmutable();
       }
     }
+    @SuppressWarnings("FinalStaticMethod")
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return com.mumu.core.MumuGen.internal_static_mumu_Array_descriptor;
@@ -370,15 +376,15 @@ public final class MumuGen {
         output.writeRawVarint32(10);
         output.writeRawVarint32(dimMemoizedSerializedSize);
       }
-      for (int i = 0; i < dim_.size(); i++) {
-        output.writeInt32NoTag(dim_.get(i));
+      for (Integer aDim_ : dim_) {
+        output.writeInt32NoTag(aDim_);
       }
       if (getContentList().size() > 0) {
         output.writeRawVarint32(18);
         output.writeRawVarint32(contentMemoizedSerializedSize);
       }
-      for (int i = 0; i < content_.size(); i++) {
-        output.writeFloatNoTag(content_.get(i));
+      for (Float aContent_ : content_) {
+        output.writeFloatNoTag(aContent_);
       }
       unknownFields.writeTo(output);
     }
@@ -391,9 +397,9 @@ public final class MumuGen {
       size = 0;
       {
         int dataSize = 0;
-        for (int i = 0; i < dim_.size(); i++) {
-          dataSize += com.google.protobuf.CodedOutputStream
-            .computeInt32SizeNoTag(dim_.get(i));
+        for (Integer aDim_ : dim_) {
+          dataSize += CodedOutputStream
+                  .computeInt32SizeNoTag(aDim_);
         }
         size += dataSize;
         if (!getDimList().isEmpty()) {
@@ -494,10 +500,12 @@ public final class MumuGen {
     /**
      * Protobuf type {@code mumu.Array}
      */
+    @SuppressWarnings("FinalStaticMethod")
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:mumu.Array)
         com.mumu.core.MumuGen.ArrayOrBuilder {
+      @SuppressWarnings("FinalStaticMethod")
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
         return com.mumu.core.MumuGen.internal_static_mumu_Array_descriptor;
@@ -784,34 +792,26 @@ public final class MumuGen {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>required int32 parent = 1;</code>
+     * <code>required .mumu.Activation activation = 1;</code>
      *
      * <pre>
      * X_h = f(X)
      * </pre>
-     */
-    boolean hasParent();
-    /**
-     * <code>required int32 parent = 1;</code>
-     *
-     * <pre>
-     * X_h = f(X)
-     * </pre>
-     */
-    int getParent();
-
-    /**
-     * <code>required .mumu.Activation activation = 2;</code>
      */
     boolean hasActivation();
     /**
-     * <code>required .mumu.Activation activation = 2;</code>
+     * <code>required .mumu.Activation activation = 1;</code>
+     *
+     * <pre>
+     * X_h = f(X)
+     * </pre>
      */
     com.mumu.core.MumuGen.Activation getActivation();
   }
   /**
    * Protobuf type {@code mumu.ActivationNode}
    */
+  @SuppressWarnings("FinalStaticMethod")
   public  static final class ActivationNode extends
       com.google.protobuf.GeneratedMessage implements
       // @@protoc_insertion_point(message_implements:mumu.ActivationNode)
@@ -821,7 +821,6 @@ public final class MumuGen {
       super(builder);
     }
     private ActivationNode() {
-      parent_ = 0;
       activation_ = 1;
     }
 
@@ -853,17 +852,12 @@ public final class MumuGen {
               break;
             }
             case 8: {
-              bitField0_ |= 0x00000001;
-              parent_ = input.readInt32();
-              break;
-            }
-            case 16: {
               int rawValue = input.readEnum();
               com.mumu.core.MumuGen.Activation value = com.mumu.core.MumuGen.Activation.valueOf(rawValue);
               if (value == null) {
-                unknownFields.mergeVarintField(2, rawValue);
+                unknownFields.mergeVarintField(1, rawValue);
               } else {
-                bitField0_ |= 0x00000002;
+                bitField0_ |= 0x00000001;
                 activation_ = rawValue;
               }
               break;
@@ -881,6 +875,7 @@ public final class MumuGen {
         makeExtensionsImmutable();
       }
     }
+    @SuppressWarnings("FinalStaticMethod")
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return com.mumu.core.MumuGen.internal_static_mumu_ActivationNode_descriptor;
@@ -918,39 +913,24 @@ public final class MumuGen {
     }
 
     private int bitField0_;
-    public static final int PARENT_FIELD_NUMBER = 1;
-    private int parent_;
+    public static final int ACTIVATION_FIELD_NUMBER = 1;
+    private int activation_;
     /**
-     * <code>required int32 parent = 1;</code>
+     * <code>required .mumu.Activation activation = 1;</code>
      *
      * <pre>
      * X_h = f(X)
      * </pre>
      */
-    public boolean hasParent() {
+    public boolean hasActivation() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
     /**
-     * <code>required int32 parent = 1;</code>
+     * <code>required .mumu.Activation activation = 1;</code>
      *
      * <pre>
      * X_h = f(X)
      * </pre>
-     */
-    public int getParent() {
-      return parent_;
-    }
-
-    public static final int ACTIVATION_FIELD_NUMBER = 2;
-    private int activation_;
-    /**
-     * <code>required .mumu.Activation activation = 2;</code>
-     */
-    public boolean hasActivation() {
-      return ((bitField0_ & 0x00000002) == 0x00000002);
-    }
-    /**
-     * <code>required .mumu.Activation activation = 2;</code>
      */
     public com.mumu.core.MumuGen.Activation getActivation() {
       com.mumu.core.MumuGen.Activation result = com.mumu.core.MumuGen.Activation.valueOf(activation_);
@@ -963,10 +943,6 @@ public final class MumuGen {
       if (isInitialized == 1) return true;
       if (isInitialized == 0) return false;
 
-      if (!hasParent()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
       if (!hasActivation()) {
         memoizedIsInitialized = 0;
         return false;
@@ -978,10 +954,7 @@ public final class MumuGen {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeInt32(1, parent_);
-      }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeEnum(2, activation_);
+        output.writeEnum(1, activation_);
       }
       unknownFields.writeTo(output);
     }
@@ -994,11 +967,7 @@ public final class MumuGen {
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(1, parent_);
-      }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeEnumSize(2, activation_);
+          .computeEnumSize(1, activation_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSerializedSize = size;
@@ -1080,10 +1049,12 @@ public final class MumuGen {
     /**
      * Protobuf type {@code mumu.ActivationNode}
      */
+    @SuppressWarnings("FinalStaticMethod")
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:mumu.ActivationNode)
         com.mumu.core.MumuGen.ActivationNodeOrBuilder {
+      @SuppressWarnings("FinalStaticMethod")
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
         return com.mumu.core.MumuGen.internal_static_mumu_ActivationNode_descriptor;
@@ -1112,10 +1083,8 @@ public final class MumuGen {
       }
       public Builder clear() {
         super.clear();
-        parent_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000001);
         activation_ = 1;
-        bitField0_ = (bitField0_ & ~0x00000002);
+        bitField0_ = (bitField0_ & ~0x00000001);
         return this;
       }
 
@@ -1143,10 +1112,6 @@ public final class MumuGen {
         if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
           to_bitField0_ |= 0x00000001;
         }
-        result.parent_ = parent_;
-        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
-          to_bitField0_ |= 0x00000002;
-        }
         result.activation_ = activation_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
@@ -1164,9 +1129,6 @@ public final class MumuGen {
 
       public Builder mergeFrom(com.mumu.core.MumuGen.ActivationNode other) {
         if (other == com.mumu.core.MumuGen.ActivationNode.getDefaultInstance()) return this;
-        if (other.hasParent()) {
-          setParent(other.getParent());
-        }
         if (other.hasActivation()) {
           setActivation(other.getActivation());
         }
@@ -1176,10 +1138,6 @@ public final class MumuGen {
       }
 
       public final boolean isInitialized() {
-        if (!hasParent()) {
-          
-          return false;
-        }
         if (!hasActivation()) {
           
           return false;
@@ -1206,85 +1164,53 @@ public final class MumuGen {
       }
       private int bitField0_;
 
-      private int parent_ ;
+      private int activation_ = 1;
       /**
-       * <code>required int32 parent = 1;</code>
+       * <code>required .mumu.Activation activation = 1;</code>
        *
        * <pre>
        * X_h = f(X)
        * </pre>
        */
-      public boolean hasParent() {
+      public boolean hasActivation() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
       /**
-       * <code>required int32 parent = 1;</code>
+       * <code>required .mumu.Activation activation = 1;</code>
        *
        * <pre>
        * X_h = f(X)
        * </pre>
-       */
-      public int getParent() {
-        return parent_;
-      }
-      /**
-       * <code>required int32 parent = 1;</code>
-       *
-       * <pre>
-       * X_h = f(X)
-       * </pre>
-       */
-      public Builder setParent(int value) {
-        bitField0_ |= 0x00000001;
-        parent_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>required int32 parent = 1;</code>
-       *
-       * <pre>
-       * X_h = f(X)
-       * </pre>
-       */
-      public Builder clearParent() {
-        bitField0_ = (bitField0_ & ~0x00000001);
-        parent_ = 0;
-        onChanged();
-        return this;
-      }
-
-      private int activation_ = 1;
-      /**
-       * <code>required .mumu.Activation activation = 2;</code>
-       */
-      public boolean hasActivation() {
-        return ((bitField0_ & 0x00000002) == 0x00000002);
-      }
-      /**
-       * <code>required .mumu.Activation activation = 2;</code>
        */
       public com.mumu.core.MumuGen.Activation getActivation() {
         com.mumu.core.MumuGen.Activation result = com.mumu.core.MumuGen.Activation.valueOf(activation_);
         return result == null ? com.mumu.core.MumuGen.Activation.relu : result;
       }
       /**
-       * <code>required .mumu.Activation activation = 2;</code>
+       * <code>required .mumu.Activation activation = 1;</code>
+       *
+       * <pre>
+       * X_h = f(X)
+       * </pre>
        */
       public Builder setActivation(com.mumu.core.MumuGen.Activation value) {
         if (value == null) {
           throw new NullPointerException();
         }
-        bitField0_ |= 0x00000002;
+        bitField0_ |= 0x00000001;
         activation_ = value.getNumber();
         onChanged();
         return this;
       }
       /**
-       * <code>required .mumu.Activation activation = 2;</code>
+       * <code>required .mumu.Activation activation = 1;</code>
+       *
+       * <pre>
+       * X_h = f(X)
+       * </pre>
        */
       public Builder clearActivation() {
-        bitField0_ = (bitField0_ & ~0x00000002);
+        bitField0_ = (bitField0_ & ~0x00000001);
         activation_ = 1;
         onChanged();
         return this;
@@ -1361,19 +1287,11 @@ public final class MumuGen {
      * <code>required .mumu.Activation activation = 3;</code>
      */
     com.mumu.core.MumuGen.Activation getActivation();
-
-    /**
-     * <code>required int32 parent = 4;</code>
-     */
-    boolean hasParent();
-    /**
-     * <code>required int32 parent = 4;</code>
-     */
-    int getParent();
   }
   /**
    * Protobuf type {@code mumu.DenseNode}
    */
+  @SuppressWarnings("FinalStaticMethod")
   public  static final class DenseNode extends
       com.google.protobuf.GeneratedMessage implements
       // @@protoc_insertion_point(message_implements:mumu.DenseNode)
@@ -1384,7 +1302,6 @@ public final class MumuGen {
     }
     private DenseNode() {
       activation_ = 1;
-      parent_ = 0;
     }
 
     @java.lang.Override
@@ -1451,11 +1368,6 @@ public final class MumuGen {
               }
               break;
             }
-            case 32: {
-              bitField0_ |= 0x00000008;
-              parent_ = input.readInt32();
-              break;
-            }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -1469,6 +1381,7 @@ public final class MumuGen {
         makeExtensionsImmutable();
       }
     }
+    @SuppressWarnings("FinalStaticMethod")
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return com.mumu.core.MumuGen.internal_static_mumu_DenseNode_descriptor;
@@ -1576,21 +1489,6 @@ public final class MumuGen {
       return result == null ? com.mumu.core.MumuGen.Activation.relu : result;
     }
 
-    public static final int PARENT_FIELD_NUMBER = 4;
-    private int parent_;
-    /**
-     * <code>required int32 parent = 4;</code>
-     */
-    public boolean hasParent() {
-      return ((bitField0_ & 0x00000008) == 0x00000008);
-    }
-    /**
-     * <code>required int32 parent = 4;</code>
-     */
-    public int getParent() {
-      return parent_;
-    }
-
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -1609,10 +1507,6 @@ public final class MumuGen {
         memoizedIsInitialized = 0;
         return false;
       }
-      if (!hasParent()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -1627,9 +1521,6 @@ public final class MumuGen {
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         output.writeEnum(3, activation_);
-      }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        output.writeInt32(4, parent_);
       }
       unknownFields.writeTo(output);
     }
@@ -1651,10 +1542,6 @@ public final class MumuGen {
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
           .computeEnumSize(3, activation_);
-      }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(4, parent_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSerializedSize = size;
@@ -1736,10 +1623,12 @@ public final class MumuGen {
     /**
      * Protobuf type {@code mumu.DenseNode}
      */
+    @SuppressWarnings("FinalStaticMethod")
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:mumu.DenseNode)
         com.mumu.core.MumuGen.DenseNodeOrBuilder {
+      @SuppressWarnings("FinalStaticMethod")
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
         return com.mumu.core.MumuGen.internal_static_mumu_DenseNode_descriptor;
@@ -1784,8 +1673,6 @@ public final class MumuGen {
         bitField0_ = (bitField0_ & ~0x00000002);
         activation_ = 1;
         bitField0_ = (bitField0_ & ~0x00000004);
-        parent_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000008);
         return this;
       }
 
@@ -1830,10 +1717,6 @@ public final class MumuGen {
           to_bitField0_ |= 0x00000004;
         }
         result.activation_ = activation_;
-        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
-          to_bitField0_ |= 0x00000008;
-        }
-        result.parent_ = parent_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -1859,9 +1742,6 @@ public final class MumuGen {
         if (other.hasActivation()) {
           setActivation(other.getActivation());
         }
-        if (other.hasParent()) {
-          setParent(other.getParent());
-        }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
@@ -1877,10 +1757,6 @@ public final class MumuGen {
           return false;
         }
         if (!hasActivation()) {
-          
-          return false;
-        }
-        if (!hasParent()) {
           
           return false;
         }
@@ -2214,38 +2090,6 @@ public final class MumuGen {
         return this;
       }
 
-      private int parent_ ;
-      /**
-       * <code>required int32 parent = 4;</code>
-       */
-      public boolean hasParent() {
-        return ((bitField0_ & 0x00000008) == 0x00000008);
-      }
-      /**
-       * <code>required int32 parent = 4;</code>
-       */
-      public int getParent() {
-        return parent_;
-      }
-      /**
-       * <code>required int32 parent = 4;</code>
-       */
-      public Builder setParent(int value) {
-        bitField0_ |= 0x00000008;
-        parent_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>required int32 parent = 4;</code>
-       */
-      public Builder clearParent() {
-        bitField0_ = (bitField0_ & ~0x00000008);
-        parent_ = 0;
-        onChanged();
-        return this;
-      }
-
       // @@protoc_insertion_point(builder_scope:mumu.DenseNode)
     }
 
@@ -2287,19 +2131,11 @@ public final class MumuGen {
      * </pre>
      */
     float getProbability();
-
-    /**
-     * <code>required int32 parent = 2;</code>
-     */
-    boolean hasParent();
-    /**
-     * <code>required int32 parent = 2;</code>
-     */
-    int getParent();
   }
   /**
    * Protobuf type {@code mumu.DropoutNode}
    */
+  @SuppressWarnings("FinalStaticMethod")
   public  static final class DropoutNode extends
       com.google.protobuf.GeneratedMessage implements
       // @@protoc_insertion_point(message_implements:mumu.DropoutNode)
@@ -2310,7 +2146,6 @@ public final class MumuGen {
     }
     private DropoutNode() {
       probability_ = 0F;
-      parent_ = 0;
     }
 
     @java.lang.Override
@@ -2345,11 +2180,6 @@ public final class MumuGen {
               probability_ = input.readFloat();
               break;
             }
-            case 16: {
-              bitField0_ |= 0x00000002;
-              parent_ = input.readInt32();
-              break;
-            }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -2363,6 +2193,7 @@ public final class MumuGen {
         makeExtensionsImmutable();
       }
     }
+    @SuppressWarnings("FinalStaticMethod")
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return com.mumu.core.MumuGen.internal_static_mumu_DropoutNode_descriptor;
@@ -2423,21 +2254,6 @@ public final class MumuGen {
       return probability_;
     }
 
-    public static final int PARENT_FIELD_NUMBER = 2;
-    private int parent_;
-    /**
-     * <code>required int32 parent = 2;</code>
-     */
-    public boolean hasParent() {
-      return ((bitField0_ & 0x00000002) == 0x00000002);
-    }
-    /**
-     * <code>required int32 parent = 2;</code>
-     */
-    public int getParent() {
-      return parent_;
-    }
-
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -2445,10 +2261,6 @@ public final class MumuGen {
       if (isInitialized == 0) return false;
 
       if (!hasProbability()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!hasParent()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -2460,9 +2272,6 @@ public final class MumuGen {
                         throws java.io.IOException {
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         output.writeFloat(1, probability_);
-      }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeInt32(2, parent_);
       }
       unknownFields.writeTo(output);
     }
@@ -2476,10 +2285,6 @@ public final class MumuGen {
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
           .computeFloatSize(1, probability_);
-      }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(2, parent_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSerializedSize = size;
@@ -2561,10 +2366,12 @@ public final class MumuGen {
     /**
      * Protobuf type {@code mumu.DropoutNode}
      */
+    @SuppressWarnings("FinalStaticMethod")
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:mumu.DropoutNode)
         com.mumu.core.MumuGen.DropoutNodeOrBuilder {
+      @SuppressWarnings("FinalStaticMethod")
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
         return com.mumu.core.MumuGen.internal_static_mumu_DropoutNode_descriptor;
@@ -2595,8 +2402,6 @@ public final class MumuGen {
         super.clear();
         probability_ = 0F;
         bitField0_ = (bitField0_ & ~0x00000001);
-        parent_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000002);
         return this;
       }
 
@@ -2625,10 +2430,6 @@ public final class MumuGen {
           to_bitField0_ |= 0x00000001;
         }
         result.probability_ = probability_;
-        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
-          to_bitField0_ |= 0x00000002;
-        }
-        result.parent_ = parent_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -2648,9 +2449,6 @@ public final class MumuGen {
         if (other.hasProbability()) {
           setProbability(other.getProbability());
         }
-        if (other.hasParent()) {
-          setParent(other.getParent());
-        }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
@@ -2658,10 +2456,6 @@ public final class MumuGen {
 
       public final boolean isInitialized() {
         if (!hasProbability()) {
-          
-          return false;
-        }
-        if (!hasParent()) {
           
           return false;
         }
@@ -2731,38 +2525,6 @@ public final class MumuGen {
       public Builder clearProbability() {
         bitField0_ = (bitField0_ & ~0x00000001);
         probability_ = 0F;
-        onChanged();
-        return this;
-      }
-
-      private int parent_ ;
-      /**
-       * <code>required int32 parent = 2;</code>
-       */
-      public boolean hasParent() {
-        return ((bitField0_ & 0x00000002) == 0x00000002);
-      }
-      /**
-       * <code>required int32 parent = 2;</code>
-       */
-      public int getParent() {
-        return parent_;
-      }
-      /**
-       * <code>required int32 parent = 2;</code>
-       */
-      public Builder setParent(int value) {
-        bitField0_ |= 0x00000002;
-        parent_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>required int32 parent = 2;</code>
-       */
-      public Builder clearParent() {
-        bitField0_ = (bitField0_ & ~0x00000002);
-        parent_ = 0;
         onChanged();
         return this;
       }
@@ -2841,19 +2603,11 @@ public final class MumuGen {
      * <code>required float epsilon = 3;</code>
      */
     float getEpsilon();
-
-    /**
-     * <code>required int32 parent = 4;</code>
-     */
-    boolean hasParent();
-    /**
-     * <code>required int32 parent = 4;</code>
-     */
-    int getParent();
   }
   /**
    * Protobuf type {@code mumu.NormalizationNode}
    */
+  @SuppressWarnings("FinalStaticMethod")
   public  static final class NormalizationNode extends
       com.google.protobuf.GeneratedMessage implements
       // @@protoc_insertion_point(message_implements:mumu.NormalizationNode)
@@ -2864,7 +2618,6 @@ public final class MumuGen {
     }
     private NormalizationNode() {
       epsilon_ = 0F;
-      parent_ = 0;
     }
 
     @java.lang.Override
@@ -2925,11 +2678,6 @@ public final class MumuGen {
               epsilon_ = input.readFloat();
               break;
             }
-            case 32: {
-              bitField0_ |= 0x00000008;
-              parent_ = input.readInt32();
-              break;
-            }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -2943,6 +2691,7 @@ public final class MumuGen {
         makeExtensionsImmutable();
       }
     }
+    @SuppressWarnings("FinalStaticMethod")
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return com.mumu.core.MumuGen.internal_static_mumu_NormalizationNode_descriptor;
@@ -3052,21 +2801,6 @@ public final class MumuGen {
       return epsilon_;
     }
 
-    public static final int PARENT_FIELD_NUMBER = 4;
-    private int parent_;
-    /**
-     * <code>required int32 parent = 4;</code>
-     */
-    public boolean hasParent() {
-      return ((bitField0_ & 0x00000008) == 0x00000008);
-    }
-    /**
-     * <code>required int32 parent = 4;</code>
-     */
-    public int getParent() {
-      return parent_;
-    }
-
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -3085,10 +2819,6 @@ public final class MumuGen {
         memoizedIsInitialized = 0;
         return false;
       }
-      if (!hasParent()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -3103,9 +2833,6 @@ public final class MumuGen {
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         output.writeFloat(3, epsilon_);
-      }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        output.writeInt32(4, parent_);
       }
       unknownFields.writeTo(output);
     }
@@ -3127,10 +2854,6 @@ public final class MumuGen {
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
           .computeFloatSize(3, epsilon_);
-      }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(4, parent_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSerializedSize = size;
@@ -3212,10 +2935,12 @@ public final class MumuGen {
     /**
      * Protobuf type {@code mumu.NormalizationNode}
      */
+    @SuppressWarnings("FinalStaticMethod")
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:mumu.NormalizationNode)
         com.mumu.core.MumuGen.NormalizationNodeOrBuilder {
+      @SuppressWarnings("FinalStaticMethod")
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
         return com.mumu.core.MumuGen.internal_static_mumu_NormalizationNode_descriptor;
@@ -3260,8 +2985,6 @@ public final class MumuGen {
         bitField0_ = (bitField0_ & ~0x00000002);
         epsilon_ = 0F;
         bitField0_ = (bitField0_ & ~0x00000004);
-        parent_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000008);
         return this;
       }
 
@@ -3306,10 +3029,6 @@ public final class MumuGen {
           to_bitField0_ |= 0x00000004;
         }
         result.epsilon_ = epsilon_;
-        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
-          to_bitField0_ |= 0x00000008;
-        }
-        result.parent_ = parent_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -3335,9 +3054,6 @@ public final class MumuGen {
         if (other.hasEpsilon()) {
           setEpsilon(other.getEpsilon());
         }
-        if (other.hasParent()) {
-          setParent(other.getParent());
-        }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
@@ -3353,10 +3069,6 @@ public final class MumuGen {
           return false;
         }
         if (!hasEpsilon()) {
-          
-          return false;
-        }
-        if (!hasParent()) {
           
           return false;
         }
@@ -3695,38 +3407,6 @@ public final class MumuGen {
         return this;
       }
 
-      private int parent_ ;
-      /**
-       * <code>required int32 parent = 4;</code>
-       */
-      public boolean hasParent() {
-        return ((bitField0_ & 0x00000008) == 0x00000008);
-      }
-      /**
-       * <code>required int32 parent = 4;</code>
-       */
-      public int getParent() {
-        return parent_;
-      }
-      /**
-       * <code>required int32 parent = 4;</code>
-       */
-      public Builder setParent(int value) {
-        bitField0_ |= 0x00000008;
-        parent_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>required int32 parent = 4;</code>
-       */
-      public Builder clearParent() {
-        bitField0_ = (bitField0_ & ~0x00000008);
-        parent_ = 0;
-        onChanged();
-        return this;
-      }
-
       // @@protoc_insertion_point(builder_scope:mumu.NormalizationNode)
     }
 
@@ -3803,10 +3483,29 @@ public final class MumuGen {
      * <code>optional .mumu.ActivationNode activationNode = 4;</code>
      */
     com.mumu.core.MumuGen.ActivationNodeOrBuilder getActivationNodeOrBuilder();
+
+    /**
+     * <code>required int32 id = 5;</code>
+     */
+    boolean hasId();
+    /**
+     * <code>required int32 id = 5;</code>
+     */
+    int getId();
+
+    /**
+     * <code>optional int32 parent = 6;</code>
+     */
+    boolean hasParent();
+    /**
+     * <code>optional int32 parent = 6;</code>
+     */
+    int getParent();
   }
   /**
    * Protobuf type {@code mumu.Node}
    */
+  @SuppressWarnings("FinalStaticMethod")
   public  static final class Node extends
       com.google.protobuf.GeneratedMessage implements
       // @@protoc_insertion_point(message_implements:mumu.Node)
@@ -3816,6 +3515,8 @@ public final class MumuGen {
       super(builder);
     }
     private Node() {
+      id_ = 0;
+      parent_ = 0;
     }
 
     @java.lang.Override
@@ -3897,6 +3598,16 @@ public final class MumuGen {
               layerCase_ = 4;
               break;
             }
+            case 40: {
+              bitField0_ |= 0x00000010;
+              id_ = input.readInt32();
+              break;
+            }
+            case 48: {
+              bitField0_ |= 0x00000020;
+              parent_ = input.readInt32();
+              break;
+            }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -3910,6 +3621,7 @@ public final class MumuGen {
         makeExtensionsImmutable();
       }
     }
+    @SuppressWarnings("FinalStaticMethod")
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return com.mumu.core.MumuGen.internal_static_mumu_Node_descriptor;
@@ -4086,12 +3798,46 @@ public final class MumuGen {
       return com.mumu.core.MumuGen.ActivationNode.getDefaultInstance();
     }
 
+    public static final int ID_FIELD_NUMBER = 5;
+    private int id_;
+    /**
+     * <code>required int32 id = 5;</code>
+     */
+    public boolean hasId() {
+      return ((bitField0_ & 0x00000010) == 0x00000010);
+    }
+    /**
+     * <code>required int32 id = 5;</code>
+     */
+    public int getId() {
+      return id_;
+    }
+
+    public static final int PARENT_FIELD_NUMBER = 6;
+    private int parent_;
+    /**
+     * <code>optional int32 parent = 6;</code>
+     */
+    public boolean hasParent() {
+      return ((bitField0_ & 0x00000020) == 0x00000020);
+    }
+    /**
+     * <code>optional int32 parent = 6;</code>
+     */
+    public int getParent() {
+      return parent_;
+    }
+
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized == 1) return true;
       if (isInitialized == 0) return false;
 
+      if (!hasId()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
       if (hasDenseNode()) {
         if (!getDenseNode().isInitialized()) {
           memoizedIsInitialized = 0;
@@ -4134,6 +3880,12 @@ public final class MumuGen {
       if (layerCase_ == 4) {
         output.writeMessage(4, (com.mumu.core.MumuGen.ActivationNode) layer_);
       }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        output.writeInt32(5, id_);
+      }
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        output.writeInt32(6, parent_);
+      }
       unknownFields.writeTo(output);
     }
 
@@ -4158,6 +3910,14 @@ public final class MumuGen {
       if (layerCase_ == 4) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(4, (com.mumu.core.MumuGen.ActivationNode) layer_);
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(5, id_);
+      }
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(6, parent_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSerializedSize = size;
@@ -4239,10 +3999,12 @@ public final class MumuGen {
     /**
      * Protobuf type {@code mumu.Node}
      */
+    @SuppressWarnings("FinalStaticMethod")
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:mumu.Node)
         com.mumu.core.MumuGen.NodeOrBuilder {
+      @SuppressWarnings("FinalStaticMethod")
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
         return com.mumu.core.MumuGen.internal_static_mumu_Node_descriptor;
@@ -4271,6 +4033,10 @@ public final class MumuGen {
       }
       public Builder clear() {
         super.clear();
+        id_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000010);
+        parent_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000020);
         layerCase_ = 0;
         layer_ = null;
         return this;
@@ -4325,6 +4091,14 @@ public final class MumuGen {
             result.layer_ = activationNodeBuilder_.build();
           }
         }
+        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
+          to_bitField0_ |= 0x00000010;
+        }
+        result.id_ = id_;
+        if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
+          to_bitField0_ |= 0x00000020;
+        }
+        result.parent_ = parent_;
         result.bitField0_ = to_bitField0_;
         result.layerCase_ = layerCase_;
         onBuilt();
@@ -4342,6 +4116,12 @@ public final class MumuGen {
 
       public Builder mergeFrom(com.mumu.core.MumuGen.Node other) {
         if (other == com.mumu.core.MumuGen.Node.getDefaultInstance()) return this;
+        if (other.hasId()) {
+          setId(other.getId());
+        }
+        if (other.hasParent()) {
+          setParent(other.getParent());
+        }
         switch (other.getLayerCase()) {
           case DENSENODE: {
             mergeDenseNode(other.getDenseNode());
@@ -4369,6 +4149,10 @@ public final class MumuGen {
       }
 
       public final boolean isInitialized() {
+        if (!hasId()) {
+          
+          return false;
+        }
         if (hasDenseNode()) {
           if (!getDenseNode().isInitialized()) {
             
@@ -4974,6 +4758,70 @@ public final class MumuGen {
         return activationNodeBuilder_;
       }
 
+      private int id_ ;
+      /**
+       * <code>required int32 id = 5;</code>
+       */
+      public boolean hasId() {
+        return ((bitField0_ & 0x00000010) == 0x00000010);
+      }
+      /**
+       * <code>required int32 id = 5;</code>
+       */
+      public int getId() {
+        return id_;
+      }
+      /**
+       * <code>required int32 id = 5;</code>
+       */
+      public Builder setId(int value) {
+        bitField0_ |= 0x00000010;
+        id_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required int32 id = 5;</code>
+       */
+      public Builder clearId() {
+        bitField0_ = (bitField0_ & ~0x00000010);
+        id_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int parent_ ;
+      /**
+       * <code>optional int32 parent = 6;</code>
+       */
+      public boolean hasParent() {
+        return ((bitField0_ & 0x00000020) == 0x00000020);
+      }
+      /**
+       * <code>optional int32 parent = 6;</code>
+       */
+      public int getParent() {
+        return parent_;
+      }
+      /**
+       * <code>optional int32 parent = 6;</code>
+       */
+      public Builder setParent(int value) {
+        bitField0_ |= 0x00000020;
+        parent_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 parent = 6;</code>
+       */
+      public Builder clearParent() {
+        bitField0_ = (bitField0_ & ~0x00000020);
+        parent_ = 0;
+        onChanged();
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:mumu.Node)
     }
 
@@ -5026,6 +4874,7 @@ public final class MumuGen {
   /**
    * Protobuf type {@code mumu.MuNet}
    */
+  @SuppressWarnings("FinalStaticMethod")
   public  static final class MuNet extends
       com.google.protobuf.GeneratedMessage implements
       // @@protoc_insertion_point(message_implements:mumu.MuNet)
@@ -5089,6 +4938,7 @@ public final class MumuGen {
         makeExtensionsImmutable();
       }
     }
+    @SuppressWarnings("FinalStaticMethod")
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
       return com.mumu.core.MumuGen.internal_static_mumu_MuNet_descriptor;
@@ -5178,8 +5028,8 @@ public final class MumuGen {
 
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      for (int i = 0; i < layers_.size(); i++) {
-        output.writeMessage(1, layers_.get(i));
+      for (Node aLayers_ : layers_) {
+        output.writeMessage(1, aLayers_);
       }
       unknownFields.writeTo(output);
     }
@@ -5190,9 +5040,9 @@ public final class MumuGen {
       if (size != -1) return size;
 
       size = 0;
-      for (int i = 0; i < layers_.size(); i++) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(1, layers_.get(i));
+      for (Node aLayers_ : layers_) {
+        size += CodedOutputStream
+                .computeMessageSize(1, aLayers_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSerializedSize = size;
@@ -5274,10 +5124,12 @@ public final class MumuGen {
     /**
      * Protobuf type {@code mumu.MuNet}
      */
+    @SuppressWarnings("FinalStaticMethod")
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:mumu.MuNet)
         com.mumu.core.MumuGen.MuNetOrBuilder {
+      @SuppressWarnings("FinalStaticMethod")
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
         return com.mumu.core.MumuGen.internal_static_mumu_MuNet_descriptor;
@@ -5726,25 +5578,24 @@ public final class MumuGen {
   static {
     java.lang.String[] descriptorData = {
       "\n\020proto/mumu.proto\022\004mumu\"-\n\005Array\022\017\n\003dim" +
-      "\030\001 \003(\005B\002\020\001\022\023\n\007content\030\002 \003(\002B\002\020\001\"F\n\016Activ" +
-      "ationNode\022\016\n\006parent\030\001 \002(\005\022$\n\nactivation\030" +
-      "\002 \002(\0162\020.mumu.Activation\"y\n\tDenseNode\022\033\n\006" +
-      "weight\030\001 \002(\0132\013.mumu.Array\022\031\n\004bias\030\002 \002(\0132" +
-      "\013.mumu.Array\022$\n\nactivation\030\003 \002(\0162\020.mumu." +
-      "Activation\022\016\n\006parent\030\004 \002(\005\"2\n\013DropoutNod" +
-      "e\022\023\n\013probability\030\001 \002(\002\022\016\n\006parent\030\002 \002(\005\"k" +
-      "\n\021NormalizationNode\022\032\n\005gamma\030\001 \002(\0132\013.mum" +
-      "u.Array\022\031\n\004beta\030\002 \002(\0132\013.mumu.Array\022\017\n\007ep",
-      "silon\030\003 \002(\002\022\016\n\006parent\030\004 \002(\005\"\305\001\n\004Node\022$\n\t" +
-      "denseNode\030\001 \001(\0132\017.mumu.DenseNodeH\000\022(\n\013dr" +
-      "opoutNode\030\002 \001(\0132\021.mumu.DropoutNodeH\000\0224\n\021" +
-      "normalizationNode\030\003 \001(\0132\027.mumu.Normaliza" +
-      "tionNodeH\000\022.\n\016activationNode\030\004 \001(\0132\024.mum" +
-      "u.ActivationNodeH\000B\007\n\005Layer\"#\n\005MuNet\022\032\n\006" +
-      "layers\030\001 \003(\0132\n.mumu.Node*f\n\nActivation\022\010" +
-      "\n\004relu\020\001\022\013\n\007sigmoid\020\002\022\013\n\007softmax\020\003\022\014\n\010so" +
-      "ftplus\020\004\022\n\n\006linear\020\005\022\020\n\014hard_sigmoid\020\006\022\010" +
-      "\n\004tanh\020\007B\032\n\rcom.mumu.coreB\007MumuGenH\001"
+      "\030\001 \003(\005B\002\020\001\022\023\n\007content\030\002 \003(\002B\002\020\001\"6\n\016Activ" +
+      "ationNode\022$\n\nactivation\030\001 \002(\0162\020.mumu.Act" +
+      "ivation\"i\n\tDenseNode\022\033\n\006weight\030\001 \002(\0132\013.m" +
+      "umu.Array\022\031\n\004bias\030\002 \002(\0132\013.mumu.Array\022$\n\n" +
+      "activation\030\003 \002(\0162\020.mumu.Activation\"\"\n\013Dr" +
+      "opoutNode\022\023\n\013probability\030\001 \002(\002\"[\n\021Normal" +
+      "izationNode\022\032\n\005gamma\030\001 \002(\0132\013.mumu.Array\022" +
+      "\031\n\004beta\030\002 \002(\0132\013.mumu.Array\022\017\n\007epsilon\030\003 " +
+      "\002(\002\"\341\001\n\004Node\022$\n\tdenseNode\030\001 \001(\0132\017.mumu.D",
+      "enseNodeH\000\022(\n\013dropoutNode\030\002 \001(\0132\021.mumu.D" +
+      "ropoutNodeH\000\0224\n\021normalizationNode\030\003 \001(\0132" +
+      "\027.mumu.NormalizationNodeH\000\022.\n\016activation" +
+      "Node\030\004 \001(\0132\024.mumu.ActivationNodeH\000\022\n\n\002id" +
+      "\030\005 \002(\005\022\016\n\006parent\030\006 \001(\005B\007\n\005Layer\"#\n\005MuNet" +
+      "\022\032\n\006layers\030\001 \003(\0132\n.mumu.Node*f\n\nActivati" +
+      "on\022\010\n\004relu\020\001\022\013\n\007sigmoid\020\002\022\013\n\007softmax\020\003\022\014" +
+      "\n\010softplus\020\004\022\n\n\006linear\020\005\022\020\n\014hard_sigmoid" +
+      "\020\006\022\010\n\004tanh\020\007B\032\n\rcom.mumu.coreB\007MumuGenH\001"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -5769,31 +5620,31 @@ public final class MumuGen {
     internal_static_mumu_ActivationNode_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_mumu_ActivationNode_descriptor,
-        new java.lang.String[] { "Parent", "Activation", });
+        new java.lang.String[] { "Activation", });
     internal_static_mumu_DenseNode_descriptor =
       getDescriptor().getMessageTypes().get(2);
     internal_static_mumu_DenseNode_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_mumu_DenseNode_descriptor,
-        new java.lang.String[] { "Weight", "Bias", "Activation", "Parent", });
+        new java.lang.String[] { "Weight", "Bias", "Activation", });
     internal_static_mumu_DropoutNode_descriptor =
       getDescriptor().getMessageTypes().get(3);
     internal_static_mumu_DropoutNode_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_mumu_DropoutNode_descriptor,
-        new java.lang.String[] { "Probability", "Parent", });
+        new java.lang.String[] { "Probability", });
     internal_static_mumu_NormalizationNode_descriptor =
       getDescriptor().getMessageTypes().get(4);
     internal_static_mumu_NormalizationNode_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_mumu_NormalizationNode_descriptor,
-        new java.lang.String[] { "Gamma", "Beta", "Epsilon", "Parent", });
+        new java.lang.String[] { "Gamma", "Beta", "Epsilon", });
     internal_static_mumu_Node_descriptor =
       getDescriptor().getMessageTypes().get(5);
     internal_static_mumu_Node_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_mumu_Node_descriptor,
-        new java.lang.String[] { "DenseNode", "DropoutNode", "NormalizationNode", "ActivationNode", "Layer", });
+        new java.lang.String[] { "DenseNode", "DropoutNode", "NormalizationNode", "ActivationNode", "Id", "Parent", "Layer", });
     internal_static_mumu_MuNet_descriptor =
       getDescriptor().getMessageTypes().get(6);
     internal_static_mumu_MuNet_fieldAccessorTable = new

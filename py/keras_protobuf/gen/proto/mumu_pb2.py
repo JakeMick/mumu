@@ -20,7 +20,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='proto/mumu.proto',
   package='mumu',
   syntax='proto2',
-  serialized_pb=_b('\n\x10proto/mumu.proto\x12\x04mumu\"-\n\x05\x41rray\x12\x0f\n\x03\x64im\x18\x01 \x03(\x05\x42\x02\x10\x01\x12\x13\n\x07\x63ontent\x18\x02 \x03(\x02\x42\x02\x10\x01\"F\n\x0e\x41\x63tivationNode\x12\x0e\n\x06parent\x18\x01 \x02(\x05\x12$\n\nactivation\x18\x02 \x02(\x0e\x32\x10.mumu.Activation\"y\n\tDenseNode\x12\x1b\n\x06weight\x18\x01 \x02(\x0b\x32\x0b.mumu.Array\x12\x19\n\x04\x62ias\x18\x02 \x02(\x0b\x32\x0b.mumu.Array\x12$\n\nactivation\x18\x03 \x02(\x0e\x32\x10.mumu.Activation\x12\x0e\n\x06parent\x18\x04 \x02(\x05\"2\n\x0b\x44ropoutNode\x12\x13\n\x0bprobability\x18\x01 \x02(\x02\x12\x0e\n\x06parent\x18\x02 \x02(\x05\"k\n\x11NormalizationNode\x12\x1a\n\x05gamma\x18\x01 \x02(\x0b\x32\x0b.mumu.Array\x12\x19\n\x04\x62\x65ta\x18\x02 \x02(\x0b\x32\x0b.mumu.Array\x12\x0f\n\x07\x65psilon\x18\x03 \x02(\x02\x12\x0e\n\x06parent\x18\x04 \x02(\x05\"\xc5\x01\n\x04Node\x12$\n\tdenseNode\x18\x01 \x01(\x0b\x32\x0f.mumu.DenseNodeH\x00\x12(\n\x0b\x64ropoutNode\x18\x02 \x01(\x0b\x32\x11.mumu.DropoutNodeH\x00\x12\x34\n\x11normalizationNode\x18\x03 \x01(\x0b\x32\x17.mumu.NormalizationNodeH\x00\x12.\n\x0e\x61\x63tivationNode\x18\x04 \x01(\x0b\x32\x14.mumu.ActivationNodeH\x00\x42\x07\n\x05Layer\"#\n\x05MuNet\x12\x1a\n\x06layers\x18\x01 \x03(\x0b\x32\n.mumu.Node*f\n\nActivation\x12\x08\n\x04relu\x10\x01\x12\x0b\n\x07sigmoid\x10\x02\x12\x0b\n\x07softmax\x10\x03\x12\x0c\n\x08softplus\x10\x04\x12\n\n\x06linear\x10\x05\x12\x10\n\x0chard_sigmoid\x10\x06\x12\x08\n\x04tanh\x10\x07\x42\x1a\n\rcom.mumu.coreB\x07MumuGenH\x01')
+  serialized_pb=_b('\n\x10proto/mumu.proto\x12\x04mumu\"-\n\x05\x41rray\x12\x0f\n\x03\x64im\x18\x01 \x03(\x05\x42\x02\x10\x01\x12\x13\n\x07\x63ontent\x18\x02 \x03(\x02\x42\x02\x10\x01\"6\n\x0e\x41\x63tivationNode\x12$\n\nactivation\x18\x01 \x02(\x0e\x32\x10.mumu.Activation\"i\n\tDenseNode\x12\x1b\n\x06weight\x18\x01 \x02(\x0b\x32\x0b.mumu.Array\x12\x19\n\x04\x62ias\x18\x02 \x02(\x0b\x32\x0b.mumu.Array\x12$\n\nactivation\x18\x03 \x02(\x0e\x32\x10.mumu.Activation\"\"\n\x0b\x44ropoutNode\x12\x13\n\x0bprobability\x18\x01 \x02(\x02\"[\n\x11NormalizationNode\x12\x1a\n\x05gamma\x18\x01 \x02(\x0b\x32\x0b.mumu.Array\x12\x19\n\x04\x62\x65ta\x18\x02 \x02(\x0b\x32\x0b.mumu.Array\x12\x0f\n\x07\x65psilon\x18\x03 \x02(\x02\"\xe1\x01\n\x04Node\x12$\n\tdenseNode\x18\x01 \x01(\x0b\x32\x0f.mumu.DenseNodeH\x00\x12(\n\x0b\x64ropoutNode\x18\x02 \x01(\x0b\x32\x11.mumu.DropoutNodeH\x00\x12\x34\n\x11normalizationNode\x18\x03 \x01(\x0b\x32\x17.mumu.NormalizationNodeH\x00\x12.\n\x0e\x61\x63tivationNode\x18\x04 \x01(\x0b\x32\x14.mumu.ActivationNodeH\x00\x12\n\n\x02id\x18\x05 \x02(\x05\x12\x0e\n\x06parent\x18\x06 \x01(\x05\x42\x07\n\x05Layer\"#\n\x05MuNet\x12\x1a\n\x06layers\x18\x01 \x03(\x0b\x32\n.mumu.Node*f\n\nActivation\x12\x08\n\x04relu\x10\x01\x12\x0b\n\x07sigmoid\x10\x02\x12\x0b\n\x07softmax\x10\x03\x12\x0c\n\x08softplus\x10\x04\x12\n\n\x06linear\x10\x05\x12\x10\n\x0chard_sigmoid\x10\x06\x12\x08\n\x04tanh\x10\x07\x42\x1a\n\rcom.mumu.coreB\x07MumuGenH\x01')
 )
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
@@ -61,8 +61,8 @@ _ACTIVATION = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   options=None,
-  serialized_start=666,
-  serialized_end=768,
+  serialized_start=630,
+  serialized_end=732,
 )
 _sym_db.RegisterEnumDescriptor(_ACTIVATION)
 
@@ -123,15 +123,8 @@ _ACTIVATIONNODE = _descriptor.Descriptor(
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='parent', full_name='mumu.ActivationNode.parent', index=0,
-      number=1, type=5, cpp_type=1, label=2,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='activation', full_name='mumu.ActivationNode.activation', index=1,
-      number=2, type=14, cpp_type=8, label=2,
+      name='activation', full_name='mumu.ActivationNode.activation', index=0,
+      number=1, type=14, cpp_type=8, label=2,
       has_default_value=False, default_value=1,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -149,7 +142,7 @@ _ACTIVATIONNODE = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=73,
-  serialized_end=143,
+  serialized_end=127,
 )
 
 
@@ -181,13 +174,6 @@ _DENSENODE = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
-    _descriptor.FieldDescriptor(
-      name='parent', full_name='mumu.DenseNode.parent', index=3,
-      number=4, type=5, cpp_type=1, label=2,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
   ],
   extensions=[
   ],
@@ -200,8 +186,8 @@ _DENSENODE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=145,
-  serialized_end=266,
+  serialized_start=129,
+  serialized_end=234,
 )
 
 
@@ -219,13 +205,6 @@ _DROPOUTNODE = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
-    _descriptor.FieldDescriptor(
-      name='parent', full_name='mumu.DropoutNode.parent', index=1,
-      number=2, type=5, cpp_type=1, label=2,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
   ],
   extensions=[
   ],
@@ -238,8 +217,8 @@ _DROPOUTNODE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=268,
-  serialized_end=318,
+  serialized_start=236,
+  serialized_end=270,
 )
 
 
@@ -271,13 +250,6 @@ _NORMALIZATIONNODE = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
-    _descriptor.FieldDescriptor(
-      name='parent', full_name='mumu.NormalizationNode.parent', index=3,
-      number=4, type=5, cpp_type=1, label=2,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
   ],
   extensions=[
   ],
@@ -290,8 +262,8 @@ _NORMALIZATIONNODE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=320,
-  serialized_end=427,
+  serialized_start=272,
+  serialized_end=363,
 )
 
 
@@ -330,6 +302,20 @@ _NODE = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
+    _descriptor.FieldDescriptor(
+      name='id', full_name='mumu.Node.id', index=4,
+      number=5, type=5, cpp_type=1, label=2,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='parent', full_name='mumu.Node.parent', index=5,
+      number=6, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
   ],
   extensions=[
   ],
@@ -345,8 +331,8 @@ _NODE = _descriptor.Descriptor(
       name='Layer', full_name='mumu.Node.Layer',
       index=0, containing_type=None, fields=[]),
   ],
-  serialized_start=430,
-  serialized_end=627,
+  serialized_start=366,
+  serialized_end=591,
 )
 
 
@@ -376,8 +362,8 @@ _MUNET = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=629,
-  serialized_end=664,
+  serialized_start=593,
+  serialized_end=628,
 )
 
 _ACTIVATIONNODE.fields_by_name['activation'].enum_type = _ACTIVATION

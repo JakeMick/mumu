@@ -7,6 +7,8 @@ py/__pycache__/
 # C extensions
 *.so
 
+ignores/*
+
 # Distribution / packaging
 .Python
 py/env/

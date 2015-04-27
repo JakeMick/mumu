@@ -39,31 +39,40 @@ class SerializedKeras():
         self._serialized_network = mu.MuNet()
         for (ind, keras_layer) in enumerate(model.layers):
             self._serialized_layer = self._serialized_network.layers.add()
+            if ind == 0:
+                parent_id = -1
+            else:
+                parent_id = ind - 1
+            print parent_id
             if isinstance(keras_layer, Dense):
-                self._serialize_dense(keras_layer, ind)
+                self._serialize_dense(keras_layer, ind, parent_id)
             elif isinstance(keras_layer, Activation):
-                self._serialize_activation(keras_layer, ind)
-            elif isinstance(keras_layer, BatchNormalization):
-                self._serialize_batch_normalization(keras_layer, ind)
+                self._serialize_activation(keras_layer, ind, parent_id)
+            # Batch Normalization has issues.
+            # It needs to be storing mean and variances so at prediction time,
+            # the results are deterministic.
+            #elif isinstance(keras_layer, BatchNormalization):
+            #    self._serialize_batch_normalization(keras_layer, ind, parent_id)
             elif isinstance(keras_layer, Dropout):
-                self._serialize_dropout(keras_layer, ind)
+                self._serialize_dropout(keras_layer, ind, parent_id)
             else:
                 raise Exception("Not implemented: {}".format(str(keras_layer)))
         return self._serialized_network
 
-    def _serialize_dropout(self, keras_layer, parent_id):
-        self._serialized_layer.dropoutNode.parent = parent_id
+    def _serialize_dropout(self, keras_layer, id, parent_id):
+        self._serialized_layer.id = id
+        self._serialized_layer.parent = parent_id
         proba = keras_layer.p
         self._serialized_layer.dropoutNode.probability = proba
 
     def _deserialize_dropout(self, ser_layer):
         proba = ser_layer.dropoutNode.probability
         layer = Dropout(proba)
-        self._deserialized_network.append((ser_layer.dropoutNode.parent,
-                                           layer))
+        self._deserialized_network.append((ser_layer.parent, layer))
 
-    def _serialize_batch_normalization(self, keras_layer, parent_id):
-        self._serialized_layer.normalizationNode.parent = parent_id
+    def _serialize_batch_normalization(self, keras_layer, id, parent_id):
+        self._serialized_layer.id = id
+        self._serialized_layer.parent = parent_id
         beta = keras_layer.beta.get_value()
         self._serialize_array(beta,
                               self._serialized_layer.normalizationNode.beta)
@@ -83,11 +92,11 @@ class SerializedKeras():
 
         gamma = self._deserialize_array(ser_layer.normalizationNode.gamma)
         layer.gamma.set_value(gamma)
-        self._deserialized_network.append((ser_layer.normalizationNode.parent,
-                                           layer))
+        self._deserialized_network.append((ser_layer.parent, layer))
 
-    def _serialize_dense(self, keras_layer, parent_id):
-        self._serialized_layer.denseNode.parent = parent_id
+    def _serialize_dense(self, keras_layer, id, parent_id):
+        self._serialized_layer.id = id
+        self._serialized_layer.parent = parent_id
         weight = keras_layer.W.get_value()
         self._serialize_array(weight, self._serialized_layer.denseNode.weight)
         bias = keras_layer.b.get_value()
@@ -103,10 +112,11 @@ class SerializedKeras():
         layer.W.set_value(weights)
         biases = self._deserialize_array(ser_layer.denseNode.bias)
         layer.b.set_value(biases)
-        self._deserialized_network.append((ser_layer.denseNode.parent, layer))
+        self._deserialized_network.append((ser_layer.parent, layer))
 
-    def _serialize_activation(self, keras_layer, parent_id):
-        self._serialized_layer.activationNode.parent = parent_id
+    def _serialize_activation(self, keras_layer, id, parent_id):
+        self._serialized_layer.id = id
+        self._serialized_layer.parent = parent_id
         act_func = keras_layer.activation.func_name
         try:
             self._serialized_layer.activationNode.activation \
@@ -120,7 +130,7 @@ class SerializedKeras():
             layer = Activation(act_func)
         except:
             raise Exception("Not implemented: {}".format(str(act_func)))
-        self._deserialized_network.append((ser_layer.activationNode.parent,
+        self._deserialized_network.append((ser_layer.parent,
                                            layer))
 
     def _serialize_array(self, arr, serial):

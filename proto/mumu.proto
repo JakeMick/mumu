@@ -22,8 +22,7 @@ enum Activation {
 
 message ActivationNode {
     // X_h = f(X)
-    required int32 parent = 1;
-    required Activation activation = 2;
+    required Activation activation = 1;
 }
 
 message DenseNode {
@@ -31,13 +30,11 @@ message DenseNode {
     required Array weight = 1;
     required Array bias = 2;
     required Activation activation = 3;
-    required int32 parent = 4;
 }
 
 message DropoutNode {
     // X_h = p * X
     required float probability = 1;
-    required int32 parent = 2;
 }
 
 message NormalizationNode {
@@ -46,7 +43,7 @@ message NormalizationNode {
     required Array gamma = 1;
     required Array beta = 2;
     required float epsilon = 3;
-    required int32 parent = 4;
+
 }
 
 message Node {
@@ -54,8 +51,10 @@ message Node {
         DenseNode denseNode = 1;
         DropoutNode dropoutNode = 2;
         NormalizationNode normalizationNode = 3;
-        ActivationNode activationNode = 4;
+        ActivationNode activationNode = 4; 
     }
+    required int32 id = 5;
+    optional int32 parent = 6;
 }
 
 message MuNet {
